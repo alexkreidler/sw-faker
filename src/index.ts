@@ -1,8 +1,8 @@
 // here we are only importing the types
 // import { NamedNode, Dataset } from "rdf-js";
 
-import { JsonLd } from 'jsonld/jsonld-spec';
-import { expand } from 'jsonld';
+import { JsonLd } from "jsonld/jsonld-spec";
+import { expand } from "jsonld";
 
 /* # Input
 * This section defines the input structure of the API
@@ -11,8 +11,8 @@ import { expand } from 'jsonld';
 * All fields to generate should simply contain true, but the type and context may optionally be strings. The input will be parsed with JSON-LD to get the fully normalized requested value
 */
 export type BasicInput = { [key: string]: true } & (
-  | { '@type': string }
-  | { '@type': string; '@context': string }
+  | { "@type": string }
+  | { "@type": string; "@context": string }
 );
 
 // Mapping
@@ -34,20 +34,21 @@ export interface MapProcessor {
 
 export function normalizeURL(url: URL): URL {
   url.port = "";
-  url.search = ""
-  url.username = ""
-  url.password = ""
+  url.search = "";
+  url.username = "";
+  url.password = "";
   url.protocol = "";
-  return url
+  return url;
 }
 
 export function normalizeURLString(url: string): string {
   const u = new URL(url);
-  return normalizeURL(u).toString().replace(/^https?:\/\//,'');;
+  return normalizeURL(u)
+    .toString()
+    .replace(/^https?:\/\//, "");
 }
 
 export class BasicMapProcessor implements MapProcessor {
-  constructor() {}
   expand(input: PrefixMap): TypeGeneratorMap {
     let newMap: TypeGeneratorMap = {};
     // we simply loop over the prefixes and their sub items, and create the relevant object representation
@@ -97,16 +98,16 @@ export class BasicGenerator {
     // we may need an alternative object iteration method
     // but it needs to preserve structure
     for (const elem in data[0]) {
-      if (elem == "@type") {
+      if (elem === "@type") {
         continue;
       }
-      const iri = normalizeURLString(elem)
+      const iri = normalizeURLString(elem);
 
       let generationFunction: Function = this.realSchemas[iri];
       if (!generationFunction) {
         continue;
       }
-      
+
       outObj[iri] = generationFunction();
     }
     return outObj;

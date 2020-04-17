@@ -1,6 +1,9 @@
 {
   "version": "0.1.0",
   "license": "MIT",
+  "name": "sw-faker",
+  "author": "Alex Kreidler",
+  "module": "dist/sw-faker.esm.js",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -26,12 +29,22 @@
   "prettier": {
     "printWidth": 80,
     "semi": true,
-    "singleQuote": true,
+    "singleQuote": false,
     "trailingComma": "es5"
   },
-  "name": "sw-faker",
-  "author": "Alex Kreidler",
-  "module": "dist/sw-faker.esm.js",
+  "eslint": {
+    "extends": [
+      "react-app",
+      "prettier/@typescript-eslint",
+      "plugin:prettier/recommended"
+    ],
+    "settings": {
+      "react": {
+        "version": "999.999.999"
+      },
+      "quotes": "double"
+    }
+  },
   "dependencies": {
     "@tpluscode/rdf-ns-builders": "^0.1.0",
     "@types/faker": "^4.1.11",

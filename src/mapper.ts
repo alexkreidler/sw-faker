@@ -1,8 +1,8 @@
-import * as faker from 'faker';
-import { PrefixMap } from './index';
+import * as faker from "faker";
+import { PrefixMap } from "./index";
 
 export const schemaOrgMap: PrefixMap = {
-  'https://schema.org/': {
+  "https://schema.org/": {
     email: faker.internet.email,
     //   image: "janedoe.jpg",
     jobTitle: faker.name.jobTitle,
@@ -10,8 +10,8 @@ export const schemaOrgMap: PrefixMap = {
     //   alumniOf: "Dartmouth",
     //   birthPlace: "Philadelphia, PA",
     //   birthDate: "1979-10-12",
-    height: () => faker.random.number({ min: 40, max: 84 }) + ' inches',
-    gender: () => faker.random.arrayElement(['male', 'female', 'other']),
+    height: () => faker.random.number({ min: 40, max: 84 }) + " inches",
+    gender: () => faker.random.arrayElement(["male", "female", "other"]),
     //   memberOf: "Republican Party",
     nationality: faker.address.country,
     telephone: faker.phone.phoneNumber,

@@ -1,5 +1,5 @@
-import { NamedNode, Dataset } from 'rdf-js';
-import { JsonLd } from 'jsonld/jsonld-spec';
+import { NamedNode, Dataset } from "rdf-js";
+import { JsonLd } from "jsonld/jsonld-spec";
 
 // Complex properties
 // These will only be tried if the simply properties have failed
